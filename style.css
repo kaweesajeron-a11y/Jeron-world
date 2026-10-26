@@ -4,3 +4,43 @@
 @media(max-width:900px){.nav-links{gap:14px}.hero{gap:20px}.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.image-link{height:210px}.about-section{gap:35px;padding-inline:6vw}}
 @media(max-width:650px){.site-header{height:68px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:67px;left:0;right:0;background:#101019;border-bottom:1px solid var(--line);padding:18px 24px;flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:12px 0}.nav-links .nav-contact{padding:10px 14px;margin-top:7px;text-align:center}.hero{grid-template-columns:1fr;padding-top:55px;gap:10px}.hero-art{height:300px;margin-top:20px}.art-main{width:63%;height:85%}.art-small{width:40%;height:40%}.hero-stats{gap:22px;margin-top:30px}.section-heading{display:block}.section-heading>p{margin-top:14px}.content-section,.celebrity-section{padding:60px 20px}.card-grid,.three-grid{grid-template-columns:1fr 1fr;gap:12px}.image-link{height:150px}.card-body{padding:12px}.card-body h3{font-size:16px}.card-body>p:not(.card-kicker){font-size:11px}.feature-band{grid-template-columns:1fr}.feature-image{min-height:220px;height:220px}.feature-copy{padding:35px 24px 45px}.poster-card{height:255px}.poster-overlay{left:13px;right:13px;bottom:13px}.poster-overlay h3{font-size:18px}.about-section{grid-template-columns:1fr;padding:55px 24px;gap:28px}.profile-frame{height:320px;max-width:100%}.contact-section{grid-template-columns:1fr;padding:60px 24px;gap:25px}.contact-section .section-note{margin-top:0}.site-footer{gap:12px}.site-footer p{width:100%;margin:5px 0}.celebrity-item{grid-template-columns:35px 1fr 20px}.celebrity-item strong{font-size:15px}}
 @media(max-width:380px){.card-grid,.three-grid{grid-template-columns:1fr}.image-link{height:210px}.hero-stats{gap:15px}}
+search-section,
+#anime {
+  padding: 25px;
+  color: white;
+}
+
+#siteSearch {
+  width: 100%;
+  max-width: 550px;
+  padding: 15px;
+  border: 1px solid #8b5cf6;
+  border-radius: 12px;
+  background: #171321;
+  color: white;
+  font-size: 16px;
+}
+
+.anime-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.anime-gallery article {
+  background: #171321;
+  padding: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.anime-gallery img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.anime-gallery h3 {
+  color: #c4b5fd;
+}
