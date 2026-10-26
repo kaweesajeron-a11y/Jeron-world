@@ -44,3 +44,16 @@ search-section,
 .anime-gallery h3 {
   color: #c4b5fd;
 }
+#contact a {
+  display: inline-block;
+  margin: 8px;
+  padding: 12px 16px;
+  background: #252037;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+#contact a:hover {
+  background: #7c3aed;
+}
