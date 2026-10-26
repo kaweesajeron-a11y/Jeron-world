@@ -121,3 +121,16 @@
   <script src="script.js"></script>
 </body>
 </html>
+const searchBox = document.getElementById("siteSearch");
+
+if (searchBox) {
+  searchBox.addEventListener("input", function () {
+    const searchText = this.value.toLowerCase();
+
+    document.querySelectorAll(".search-item").forEach(item => {
+      item.style.display = item.textContent
+        .toLowerCase()
+        .includes(searchText) ? "" : "none";
+    });
+  });
+}
