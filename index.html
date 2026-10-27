@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://image.tmdb.org">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
     <a class="brand" href="#home" aria-label="Jeron World home"><span class="brand-mark">JW</span><span>JERON <b>WORLD</b></span></a>
     <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
     <nav id="mainNav" class="main-nav" aria-label="Main navigation">
-      <a href="#anime">Anime</a><a href="#music">Music</a><a href="#movies">Movies</a><a href="#videos">Videos</a><a href="#about">About Me</a><a href="#connect">Connect</a>
+      <a href="#anime">Anime</a><a href="#music">Music</a><a href="#movies">Movies</a><a href="#videos">Videos</a><a href="#about">About Me</a><a href="#connect">Connect</a><a href="#community">Community</a>
     </nav>
   </header>
 
@@ -109,6 +110,52 @@
         <a class="social-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><span>▶</span><div><b>YouTube</b><small>Videos and music</small></div><span class="external">↗</span></a>
       </div>
       <p class="small-note">Check that each social profile opens your account. If a username is different, replace its URL in index.html.</p>
+    </section>
+
+    <section id="community" class="section-wrap section-block community-section">
+      <div class="section-heading"><div><p class="eyebrow">COMMUNITY</p><h2>💬 Join the conversation</h2><p class="muted">Log in, leave a comment, send a message, or join the live chat.</p></div></div>
+
+      <div class="community-grid">
+        <div class="panel auth-panel">
+          <h3>Login</h3>
+          <form id="authForm" class="stack-form">
+            <input id="authEmail" type="email" placeholder="Email" required>
+            <input id="authPassword" type="password" placeholder="Password" required>
+            <button type="submit">Login / Sign up</button>
+          </form>
+          <div id="authStatus" class="form-status"></div>
+          <button id="signOutBtn" class="ghost-button hidden" type="button">Sign out</button>
+        </div>
+
+        <div class="panel">
+          <h3>Send a message</h3>
+          <form id="messageForm" class="stack-form">
+            <input id="messageName" type="text" placeholder="Your name" required>
+            <textarea id="messageText" rows="4" placeholder="Write your message" required></textarea>
+            <button type="submit">Send message</button>
+          </form>
+          <div id="messageStatus" class="form-status"></div>
+        </div>
+      </div>
+
+      <div class="panel comments-panel">
+        <h3>Comments</h3>
+        <form id="commentForm" class="stack-form">
+          <textarea id="commentText" rows="3" placeholder="Leave a comment" required></textarea>
+          <button type="submit">Post comment</button>
+        </form>
+        <div id="commentStatus" class="form-status"></div>
+        <ul id="commentsList" class="comment-list"></ul>
+      </div>
+
+      <div class="panel chat-panel">
+        <h3>Live chat</h3>
+        <div id="chatMessages" class="chat-messages"></div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" type="text" placeholder="Type your message..." required>
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </section>
   </main>
   <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">JW</span><span>JERON <b>WORLD</b></span></a><p>Made with ✦ by Kaweesajeron</p><a href="#home">Back to top ↑</a></footer>
