@@ -39,8 +39,8 @@
     });
   }
 
-  const SUPABASE_URL = 'https://YOUR-PROJECT-ID.supabase.co';
-  const SUPABASE_ANON_KEY = 'YOUR-ANON-KEY';
+  const SUPABASE_URL = 'https://oezmhonqmlificwoxjch.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_-SigzrDFHYfdsAV7G7KJjA_2TWAnyJg';
 
   const authForm = document.getElementById('authForm');
   const authStatus = document.getElementById('authStatus');
@@ -54,8 +54,8 @@
   const chatInput = document.getElementById('chatInput');
   const chatMessages = document.getElementById('chatMessages');
 
-  if (!window.supabase || !SUPABASE_URL.includes('supabase.co') || SUPABASE_ANON_KEY.includes('YOUR-')) {
-    const fallbackNotice = 'Connect Supabase keys in script.js to enable login, comments, chat, and messages.';
+  if (!window.supabase || !SUPABASE_URL.includes('supabase.co') || !SUPABASE_ANON_KEY) {
+    const fallbackNotice = 'Supabase connection is missing. Add your keys to script.js.';
     if (authStatus) authStatus.textContent = fallbackNotice;
     if (messageStatus) messageStatus.textContent = fallbackNotice;
     if (commentStatus) commentStatus.textContent = fallbackNotice;
@@ -93,7 +93,7 @@
     if (!commentsList || !supabase) return;
     const { data, error } = await supabase.from('comments').select('*').order('created_at', { ascending: false }).limit(20);
     if (error) {
-      commentsList.innerHTML = '<li class="empty">Comments unavailable. Set up Supabase tables first.</li>';
+      commentsList.innerHTML = '<li class="empty">Comments unavailable. Add the Supabase tables first.</li>';
       return;
     }
 
@@ -115,7 +115,7 @@
     if (!chatMessages || !supabase) return;
     const { data, error } = await supabase.from('chat_messages').select('*').order('created_at', { ascending: true }).limit(30);
     if (error) {
-      chatMessages.innerHTML = '<p class="empty">Chat unavailable. Set up Supabase tables first.</p>';
+      chatMessages.innerHTML = '<p class="empty">Chat unavailable. Add the Supabase tables first.</p>';
       return;
     }
 
@@ -137,11 +137,13 @@
 
   async function signInWithEmail(email, password) {
     const { data, error } = await supabase.auth.signUp({ email, password });
-    if (error && error.message.includes('already registered')) {
+
+    if (error && error.message && error.message.toLowerCase().includes('already registered')) {
       const loginResult = await supabase.auth.signInWithPassword({ email, password });
       if (loginResult.error) throw loginResult.error;
       return loginResult.data;
     }
+
     if (error) throw error;
     return data;
   }
