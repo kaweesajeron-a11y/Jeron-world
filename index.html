@@ -1,372 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeron World | Music, Movies & Culture</title>
-    <style>
-        /* --- PREMIUM DARK THEMING & VARIABLES --- */
-        :root {
-            --bg-main: #0b0c10;
-            --bg-card: #1f2833;
-            --text-primary: #c5a059;
-            --text-body: #ffffff;
-            --text-muted: #c5c6c7;
-            --accent: #ff4a5a;
-            --accent-hover: #e03e4d;
-            --font-display: 'Inter', system-ui, -apple-system, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-body);
-            font-family: var(--font-display);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        /* --- GLOBAL UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-padding {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--text-primary);
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* --- NAVIGATION BAR --- */
-        header {
-            background-color: rgba(11, 12, 16, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(180px, rgba(11,12,16,0.2) 0%, rgba(11,12,16,1) 100%), 
-                        url('https://unsplash.com') no-repeat center center/cover;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .btn {
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            border: 2px solid var(--text-muted);
-        }
-
-        .btn-secondary:hover {
-            background-color: #fff;
-            color: var(--bg-main);
-            transform: translateY(-2px);
-        }
-
-        /* --- MARQUEE / TICKER --- */
-        .ticker-wrap {
-            background: var(--accent);
-            overflow: hidden;
-            padding: 15px 0;
-            white-space: nowrap;
-        }
-
-        .ticker-content {
-            display: inline-block;
-            animation: marquee 25s linear infinite;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.1rem;
-        }
-
-        @keyframes marquee {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        /* --- SEARCH INTEGRATION --- */
-        .search-wrapper {
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .search-wrapper input {
-            width: 100%;
-            padding: 18px 25px;
-            border-radius: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: var(--bg-card);
-            color: #fff;
-            font-size: 1.1rem;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .search-wrapper input:focus {
-            border-color: var(--text-primary);
-        }
-
-        /* --- CONTENT CARDS GRID --- */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .search-item {
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .search-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
-
-        .card-img-wrapper {
-            position: relative;
-            padding-top: 130%; /* Unified poster/cover aspect ratio */
-            overflow: hidden;
-            background-color: #111;
-        }
-
-        .card-img-wrapper img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .search-item:hover .card-img-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .card-body {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--accent);
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .card-body h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .card-body p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .card-link {
-            font-weight: 600;
-            color: var(--text-primary);
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
-        }
-
-        .card-link:hover {
-            color: #fff;
-        }
-
-        /* --- ABOUT & BIOGRAPHY --- */
-        .about-layout {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 5px;
-            align-items: center;
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            min-height: 400px;
-            object-fit: cover;
-        }
-
-        .about-text {
-            padding: 50px;
-        }
-
-        .about-text h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        /* --- CONTACT & SOCIAL FOOTER --- */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .social-btn {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .social-btn:hover {
-            background: var(--text-primary);
-            color: var(--bg-main);
-            transform: scale(1.05);
-        }
-
-        footer {
-            background: #050508;
-            padding: 40px 0;
-            text-align: center;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.9rem;
-        }
-
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 900px) {
-            .about-layout { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .nav-links { display: none; } /* Simplified for structural robustness */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090812">
+  <meta name="description" content="Jeron World — anime, movies, global pop music, videos and the world of Kaweesajeron.">
+  <title>Jeron World | Anime, Music & Movies</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://image.tmdb.org">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Jeron World home"><span class="brand-mark">JW</span><span>JERON <b>WORLD</b></span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+      <a href="#anime">Anime</a><a href="#music">Music</a><a href="#movies">Movies</a><a href="#videos">Videos</a><a href="#about">About Me</a><a href="#connect">Connect</a>
+    </nav>
+  </header>
 
-    <!-- NAVIGATION -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">JW JERON WORLD</div>
-            <ul class="nav-links">
-                <li><a href="#explore">Explore</a></li>
-                <li><a href="#anime">Anime</a></li>
-                <li><a href="#music">Music</a></li>
-                <li><a href="#movies">Movies</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#connect">Connect</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
+  <main id="home">
     <section class="hero">
-        <div class="container hero-content">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR WORLD. YOUR ENTERTAINMENT.</p>
+        <h1>Welcome to <span>Jeron World</span></h1>
+        <p class="hero-intro">Anime heat, movie nights, global pop music and videos — all in one place, curated by Kaweesajeron.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#anime">Explore Anime ↗</a><a class="button button-quiet" href="#connect">Find Me Online</a></div>
+        <div class="hero-tags"><span>✦ Anime</span><span>♫ Music</span><span>▶ Movies & Videos</span></div>
+      </div>
+      <div class="hero-art">
+        <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=85" alt="Night sky full of stars" fetchpriority="high">
+        <div class="hero-shade"></div><div class="hero-symbol">JW<span>✦</span></div>
+        <div class="floating-tag tag-top">ANIME ZONE</div><div class="floating-tag tag-bottom">NOW ENTERING MY WORLD</div>
+      </div>
+    </section>
+
+    <section class="search-panel section-wrap" aria-labelledby="search-heading">
+      <div><p class="eyebrow">FIND SOMETHING COOL</p><h2 id="search-heading">Explore everything</h2><p class="muted">Search titles, genres, music and artists below.</p></div>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="siteSearch" type="search" placeholder="Try Naruto, pop, action..." autocomplete="off" aria-label="Search Jeron World"><button id="clearSearch" type="button" aria-label="Clear search">✕</button></label>
+      <p id="searchStatus" class="search-status" aria-live="polite"></p>
+    </section>
+
+    <section id="anime" class="section-wrap section-block">
+      <div class="section-heading"><div><p class="eyebrow">THE ANIME UNIVERSE</p><h2>🔥 Popular Anime</h2><p class="muted">Browse anime details and official trailers.</p></div><a class="text-link" href="https://myanimelist.net/topanime.php" target="_blank" rel="noopener noreferrer">Explore rankings ↗</a></div>
+      <div class="card-grid">
+        <article class="content-card searchable" data-search="naruto ninja adventure anime"><img class="poster-img" src="https://cdn.myanimelist.net/images/anime/13/17405.jpg" alt="Naruto anime artwork" loading="lazy"><div class="card-body"><p class="card-kicker">NINJA • ADVENTURE</p><h3>Naruto</h3><p>A young ninja dreams of becoming the strongest leader in his village.</p><a href="https://myanimelist.net/anime/20/Naruto" target="_blank" rel="noopener noreferrer">Anime details ↗</a></div></article>
+        <article class="content-card searchable" data-search="one piece pirate adventure anime"><img class="poster-img" src="https://cdn.myanimelist.net/images/anime/6/73245.jpg" alt="One Piece anime artwork" loading="lazy"><div class="card-body"><p class="card-kicker">PIRATES • ADVENTURE</p><h3>One Piece</h3><p>Luffy and his crew sail across the seas in search of the legendary treasure.</p><a href="https://myanimelist.net/anime/21/One_Piece" target="_blank" rel="noopener noreferrer">Anime details ↗</a></div></article>
+        <article class="content-card searchable" data-search="demon slayer action fantasy anime"><img class="poster-img" src="https://cdn.myanimelist.net/images/anime/1286/99889.jpg" alt="Demon Slayer anime artwork" loading="lazy"><div class="card-body"><p class="card-kicker">ACTION • SUPERNATURAL</p><h3>Demon Slayer</h3><p>A determined swordsman fights demons to protect his family.</p><a href="https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba" target="_blank" rel="noopener noreferrer">Anime details ↗</a></div></article>
+        <article class="content-card searchable" data-search="jujutsu kaisen action sorcery anime"><img class="poster-img" src="https://cdn.myanimelist.net/images/anime/1171/109222.jpg" alt="Jujutsu Kaisen anime artwork" loading="lazy"><div class="card-body"><p class="card-kicker">SORCERY • ACTION</p><h3>Jujutsu Kaisen</h3><p>Students face dangerous curses in a supernatural world.</p><a href="https://myanimelist.net/anime/40748/Jujutsu_Kaisen" target="_blank" rel="noopener noreferrer">Anime details ↗</a></div></article>
+        <article class="content-card searchable" data-search="attack on titan action mystery anime"><img class="poster-img" src="https://cdn.myanimelist.net/images/anime/10/47347.jpg" alt="Attack on Titan anime artwork" loading="lazy"><div class="card-body"><p class="card-kicker">MYSTERY • SURVIVAL</p><h3>Attack on Titan</h3><p>Humanity fights for survival behind enormous walls.</p><a href="https://myanimelist.net/anime/16498/Shingeki_no_Kyojin" target="_blank" rel="noopener noreferrer">Anime details ↗</a></div></article>
+        <article class="content-card searchable" data-search="my hero academia heroes action anime"><img class="poster-img" src="https://cdn.myanimelist.net/images/anime/10/78745.jpg" alt="My Hero Academia anime artwork" loading="lazy"><div class="card-body"><p class="card-kicker">HEROES • ACTION</p><h3>My Hero Academia</h3><p>A young student works toward becoming a hero in a superpowered society.</p><a href="https://myanimelist.net/anime/31964/Boku_no_Hero_Academia" target="_blank" rel="noopener noreferrer">Anime details ↗</a></div></article>
+      </div>
+    </section>
+
+    <section id="music" class="section-wrap section-block">
+      <div class="section-heading"><div><p class="eyebrow">TURN IT UP</p><h2>🎧 Music World</h2><p class="muted">US chart sounds, African hits, K-pop and music from around the world.</p></div></div>
+      <div class="card-grid">
+        <article class="content-card searchable" data-search="us american pop hits songs music artists"><img class="wide-img" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80" alt="Concert crowd under stage lights" loading="lazy"><div class="card-body"><p class="card-kicker">UNITED STATES</p><h3>US Pop & Chart Hits</h3><p>Find trending tracks and artist releases on official music services.</p><a href="https://www.billboard.com/charts/hot-100/" target="_blank" rel="noopener noreferrer">Billboard Hot 100 ↗</a><a href="https://open.spotify.com/genre/pop" target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a></div></article>
+        <article class="content-card searchable" data-search="global international afrobeats amapiano kpop music"><img class="wide-img" src="https://images.unsplash.com/photo-1524367448415-9e6f5b4a9f4d?auto=format&fit=crop&w=900&q=80" alt="Live music stage with colourful lights" loading="lazy"><div class="card-body"><p class="card-kicker">AROUND THE WORLD</p><h3>Global Sounds</h3><p>Explore Afrobeats, Amapiano, K-pop and music from other countries.</p><a href="https://www.youtube.com/results?search_query=official+global+music+hits" target="_blank" rel="noopener noreferrer">Explore global music ↗</a></div></article>
+        <article class="content-card searchable" data-search="music videos artists live performances"><img class="wide-img" src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80" alt="Singer performing on stage" loading="lazy"><div class="card-body"><p class="card-kicker">ARTIST SPOTLIGHT</p><h3>Artist Performances</h3><p>Discover performances, interviews and official music videos.</p><a href="https://www.youtube.com/results?search_query=official+pop+artist+music+videos" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></article>
+      </div>
+    </section>
+
+    <section id="movies" class="section-wrap section-block">
+      <div class="section-heading"><div><p class="eyebrow">LIGHTS, CAMERA, ACTION</p><h2>🎬 Movie Zone</h2><p class="muted">Real film posters, movie information and official trailers.</p></div></div>
+      <div class="card-grid">
+        <article class="content-card searchable" data-search="dune part two science fiction movie"><img class="poster-img" src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune Part Two movie poster" loading="lazy"><div class="card-body"><p class="card-kicker">SCI-FI • ADVENTURE</p><h3>Dune: Part Two</h3><p>A sweeping science-fiction adventure on the desert planet Arrakis.</p><a href="https://www.themoviedb.org/movie/693134-dune-part-two" target="_blank" rel="noopener noreferrer">Movie details ↗</a><a href="https://www.youtube.com/results?search_query=Dune+Part+Two+official+trailer" target="_blank" rel="noopener noreferrer">Find official trailer ↗</a></div></article>
+        <article class="content-card searchable" data-search="spider-man across spider-verse animation action movie"><img class="poster-img" src="https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xjrg5T.jpg" alt="Spider-Man Across the Spider-Verse movie poster" loading="lazy"><div class="card-body"><p class="card-kicker">ANIMATION • ACTION</p><h3>Spider-Man: Across the Spider-Verse</h3><p>Miles Morales swings into a colourful multiverse adventure.</p><a href="https://www.themoviedb.org/movie/569094-spider-man-across-the-spider-verse" target="_blank" rel="noopener noreferrer">Movie details ↗</a><a href="https://www.youtube.com/results?search_query=Spider-Man+Across+the+Spider-Verse+official+trailer" target="_blank" rel="noopener noreferrer">Find official trailer ↗</a></div></article>
+        <article class="content-card searchable" data-search="interstellar space science fiction movie"><img class="poster-img" src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar movie poster" loading="lazy"><div class="card-body"><p class="card-kicker">SPACE • SCI-FI</p><h3>Interstellar</h3><p>A team travels beyond Earth to search for humanity's future.</p><a href="https://www.themoviedb.org/movie/157336-interstellar" target="_blank" rel="noopener noreferrer">Movie details ↗</a><a href="https://www.youtube.com/results?search_query=Interstellar+official+trailer" target="_blank" rel="noopener noreferrer">Find official trailer ↗</a></div></article>
+      </div>
+      <p class="small-note">Jeron World links to official trailers and legal information/streaming services; it does not host pirated movie files.</p>
+    </section>
+
+    <section id="videos" class="section-wrap section-block">
+      <div class="section-heading"><div><p class="eyebrow">PRESS PLAY</p><h2>▶ Video Zone</h2><p class="muted">Watch a featured official anime trailer, then explore more clips.</p></div></div>
+      <div class="video-feature">
+        <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/tlJMx8H9Jd8" title="The One Piece official teaser trailer" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-copy"><p class="eyebrow">FEATURED TRAILER</p><h3>THE ONE PIECE — Official Teaser</h3><p>Watch the official teaser from the One Piece Official channel. If the embed is unavailable in your region, open it on YouTube.</p><a class="button button-primary" href="https://www.youtube.com/watch?v=tlJMx8H9Jd8" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div>
+      </div>
+      <div class="card-grid video-links">
+        <article class="content-card searchable" data-search="anime trailers openings highlights videos"><div class="video-tile anime-tile">▶</div><div class="card-body"><h3>Anime Trailers & Openings</h3><p>Find official previews and opening themes.</p><a href="https://www.youtube.com/results?search_query=official+anime+trailers" target="_blank" rel="noopener noreferrer">Explore anime videos ↗</a></div></article>
+        <article class="content-card searchable" data-search="pop music videos live performances"><div class="video-tile music-tile">♫</div><div class="card-body"><h3>Pop Music Videos</h3><p>Discover official releases and live performances.</p><a href="https://www.youtube.com/results?search_query=official+pop+music+videos" target="_blank" rel="noopener noreferrer">Explore music videos ↗</a></div></article>
+        <article class="content-card searchable" data-search="movie trailers film previews videos"><div class="video-tile movie-tile">▣</div><div class="card-body"><h3>Movie Trailers</h3><p>Check film previews and upcoming releases.</p><a href="https://www.youtube.com/results?search_query=official+movie+trailers" target="_blank" rel="noopener noreferrer">Explore movie trailers ↗</a></div></article>
+      </div>
+    </section>
+
+    <section id="about" class="about-section section-wrap section-block">
+      <div class="profile-frame"><img id="profilePhoto" src="assets/profile.jpg" alt="Kaweesajeron profile photo" onerror="this.style.display='none';document.getElementById('profileFallback').style.display='grid';"><div id="profileFallback" class="profile-fallback">KJ</div></div>
+      <div class="about-copy"><p class="eyebrow">THE FOUNDER</p><h2>Meet <span>Kaweesajeron</span></h2><p>Welcome to my world! Jeron World is my personal space for anime, movies, music, videos and things I enjoy. Explore, discover something new and connect with me online.</p><a class="button button-primary" href="#connect">Connect with me</a><p class="small-note">To show your own profile picture, upload it to the <code>assets</code> folder and name it <code>profile.jpg</code>.</p></div>
+    </section>
+
+    <section id="connect" class="section-wrap section-block connect-section">
+      <div class="section-heading"><div><p class="eyebrow">LET'S CONNECT</p><h2>🌐 Find me online</h2><p class="muted">Follow my pages and say hello.</p></div></div>
+      <div class="social-grid">
+        <a class="social-link" href="mailto:kaweesajeron@gmail.com"><span>✉</span><div><b>Email</b><small>kaweesajeron@gmail.com</small></div><span class="external">↗</span></a>
+        <a class="social-link" href="https://www.instagram.com/Tussie45/" target="_blank" rel="noopener noreferrer"><span>◎</span><div><b>Instagram</b><small>@Tussie45</small></div><span class="external">↗</span></a>
+        <a class="social-link" href="https://www.tiktok.com/@ToosieGlide" target="_blank" rel="noopener noreferrer"><span>♪</span><div><b>TikTok</b><small>@ToosieGlide</small></div><span class="external">↗</span></a>
+        <a class="social-link" href="https://www.facebook.com/Kaweesajeron" target="_blank" rel="noopener noreferrer"><span>f</span><div><b>Facebook</b><small>Kaweesajeron</small></div><span class="external">↗</span></a>
+        <a class="social-link" href="https://open.spotify.com/genre/pop" target="_blank" rel="noopener noreferrer"><span>◉</span><div><b>Spotify</b><small>Listen to music</small></div><span class="external">↗</span></a>
+        <a class="social-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><span>▶</span><div><b>YouTube</b><small>Videos and music</small></div><span class="external">↗</span></a>
+      </div>
+      <p class="small-note">Check that each social profile opens your account. If a username is different, replace its URL in index.html.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">JW</span><span>JERON <b>WORLD</b></span></a><p>Made with ✦ by Kaweesajeron</p><a href="#home">Back to top ↑</a></footer>
+</body>
+</html>
