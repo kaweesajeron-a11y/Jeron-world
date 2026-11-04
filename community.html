@@ -1,10 +1,39 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080811"><meta name="description" content="Join the Jeron World community. Sign in, comment, chat and contact Kaweesajeron."><title>Community & Sign In | Jeron World</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css?v=20261104b"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="script.js?v=20261104c" defer></script></head>
-<body><header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">JW</span><span>JERON <b>WORLD</b></span></a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">☰ Menu</button><nav class="main-nav" id="mainNav"><a href="index.html">Home</a><a href="anime.html">Anime</a><a href="music.html">Music</a><a href="movies.html">Movies</a><a href="videos.html">Videos</a><a href="about.html">About</a><a href="community.html" aria-current="page">Community</a></nav></header>
-<main><section class="page-hero"><p class="eyebrow">✦ PRIVATE MEMBER EXPERIENCE</p><h1>Your world.<br><span>Your access.</span></h1><p>Sign in or create your free account to unlock the full entertainment universe — movies, anime, music, videos and the world of Kaweesajeron.</p></section>
-<section class="community-section"><div class="community-heading"><div><p class="eyebrow">MEMBER ACCESS</p><h2>Your member access</h2><p class="muted">One account unlocks every section of Jeron World. New here? Enter your email and choose a password to create an account.</p></div></div>
-<div class="community-grid"><div class="panel auth-panel"><div class="panel-icon">✦</div><h3>Welcome to your world</h3><p class="muted">Sign in to continue, or create your account in seconds.</p><form id="authForm" class="stack-form"><label for="authEmail">Email address</label><input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email" required><label for="authPassword">Password</label><input id="authPassword" type="password" placeholder="Enter your password" autocomplete="current-password" minlength="6" required><button type="submit">Enter Jeron World ↗</button></form><div id="authStatus" class="form-status" aria-live="polite">Not signed in yet.</div><button id="signOutBtn" class="ghost-button hidden" type="button">Sign out</button><p class="small-note">If this is your first visit, the button creates your account. Existing members can use the same button to log in.</p></div>
-<div class="panel"><div class="panel-icon">✉</div><h3>Send a message</h3><p class="muted">Have an idea or a question? Send it to the site inbox.</p><form id="messageForm" class="stack-form"><label for="messageName">Your name</label><input id="messageName" type="text" placeholder="Your name" required><label for="messageText">Your message</label><textarea id="messageText" rows="5" placeholder="Write your message..." required></textarea><button type="submit">Send message</button></form><div id="messageStatus" class="form-status" aria-live="polite"></div></div></div>
-<div class="panel comments-panel"><div class="panel-icon">💬</div><h3>Community comments</h3><p class="muted">Share what you're watching or listening to.</p><form id="commentForm" class="stack-form"><textarea id="commentText" rows="3" placeholder="Write a comment..." required></textarea><button type="submit">Post comment</button></form><div id="commentStatus" class="form-status" aria-live="polite"></div><ul id="commentsList" class="comment-list"></ul></div>
-<div class="panel chat-panel"><div class="panel-icon">⚡</div><h3>Live chat</h3><p class="muted">Say what's up to the community.</p><div id="chatMessages" class="chat-messages"><p class="empty">Loading messages...</p></div><form id="chatForm" class="chat-form"><input id="chatInput" type="text" placeholder="Type your message..." aria-label="Chat message" required><button type="submit">Send</button></form></div>
-</section></main><footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">JW</span><span>JERON <b>WORLD</b></span></a><p>Made with ✦ by Kaweesajeron</p><a href="#">Back to top ↑</a></footer></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080811">
+  <meta name="description" content="Sign in to access Jeron World.">
+  <title>Sign In | Jeron World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261104c">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js?v=20261104d" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="community.html"><span class="brand-mark">JW</span><span>JERON <b>WORLD</b></span></a>
+  </header>
+  <main class="signin-main">
+    <section class="signin-card">
+      <div class="signin-mark">JW</div>
+      <p class="eyebrow">PRIVATE MEMBER ACCESS</p>
+      <h1>Welcome to<br><span>Jeron World.</span></h1>
+      <p class="signin-intro">Sign in or create your free account to enter the entertainment universe.</p>
+      <form id="authForm" class="stack-form">
+        <label for="authEmail">Email address</label>
+        <input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" placeholder="Enter your password" autocomplete="current-password" minlength="6" required>
+        <button type="submit">Enter Jeron World ↗</button>
+      </form>
+      <div id="authStatus" class="form-status" aria-live="polite">Sign in or create an account to continue.</div>
+      <button id="signOutBtn" class="ghost-button hidden" type="button">Sign out</button>
+      <p class="signin-note">New here? Enter your email and choose a password to create your account.</p>
+    </section>
+  </main>
+</body>
+</html>
