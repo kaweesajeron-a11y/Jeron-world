@@ -188,3 +188,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 @media(max-width:900px){.jw-bento{grid-template-rows:repeat(2,minmax(220px,auto))}.jw-tile{min-height:220px}}
 @media(max-width:680px){.jw-bento{grid-template-columns:1fr;grid-template-rows:none}.jw-tile{min-height:225px}.jw-quick-search{padding:11px}.jw-quick-search button{padding:0 13px}.back-to-top{right:15px;bottom:15px;width:43px;height:43px}.site-header{backdrop-filter:blur(22px)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal-ready{opacity:1;transform:none}}
+
+/* Jeron World official generated logo */
+.brand-logo{width:48px;height:48px;object-fit:cover;border-radius:13px;border:1px solid rgba(85,229,225,.55);box-shadow:0 0 22px rgba(85,229,225,.28)}.jw-hero-visual>img{object-fit:cover;object-position:center;filter:saturate(1.08)}.jw-hero-visual{border:1px solid rgba(85,229,225,.35);box-shadow:0 25px 80px rgba(28,91,190,.18)}@media(max-width:680px){.brand-logo{width:42px;height:42px}}
