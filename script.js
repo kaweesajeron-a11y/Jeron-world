@@ -75,7 +75,7 @@
     if (currentUser) {
       setStatus('You are signed in as ' + currentUser.email + '. Welcome to Jeron World.');
       if (protectedPage) document.body.removeAttribute('data-auth-required');
-      if (location.pathname.endsWith('community.html') && nextPage) location.replace(safeNext);
+      if (location.pathname.endsWith('community.html')) location.replace(safeNext);
     } else {
       if (protectedPage) {
         const requested = location.pathname.split('/').pop() || 'index.html';
@@ -142,8 +142,7 @@
       if(result.data.session){
         applyUser(result.data.user);
         authForm.reset();
-        if(nextPage)location.replace(safeNext);
-        else setStatus('Welcome in. Your Jeron World account is ready.');
+        location.replace(safeNext);
       }else{
         setStatus('Account request received. Check your email for the confirmation link, including your spam folder, then return here and sign in.');
       }
