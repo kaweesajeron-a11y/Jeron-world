@@ -122,7 +122,21 @@
     try{
       let result=await supabase.auth.signInWithPassword({email,password});
       if(result.error && /invalid login credentials|user not found/i.test(result.error.message||'')){
-        result=await supabase.auth.signUp({email,password});
+        result=await supabase.auth.signUp({
+          email,
+          password,
+          options:{emailRedirectTo:location.origin+location.pathname}
+        });
+      }
+      if(result.error && /email not confirmed/i.test(result.error.message||'')){
+        const resend=await supabase.auth.resend({
+          type:'signup',
+          email,
+          options:{emailRedirectTo:location.origin+location.pathname}
+        });
+        if(resend.error)throw resend.error;
+        setStatus('Your email is not confirmed yet. We have requested a fresh confirmation link. Check your inbox and spam folder.');
+        return;
       }
       if(result.error)throw result.error;
       if(result.data.session){
@@ -131,9 +145,15 @@
         if(nextPage)location.replace(safeNext);
         else setStatus('Welcome in. Your Jeron World account is ready.');
       }else{
-        setStatus('Check your email for the confirmation link, then return here and sign in.');
+        setStatus('Account request received. Check your email for the confirmation link, including your spam folder, then return here and sign in.');
       }
-    }catch(error){setStatus(error.message||'Could not sign in. Please try again.',true);}
+    }catch(error){
+      const message=error?.message||'Could not sign in. Please try again.';
+      const network=/failed to fetch|network|load failed|fetch/i.test(message);
+      setStatus(network
+        ? 'Could not reach Supabase. Check that the project is active, the Project URL and publishable key match, and your connection is working.'
+        : message,true);
+    }
     finally{if(submit){submit.disabled=false;submit.textContent='Enter Jeron World ↗';}}
   });
 
