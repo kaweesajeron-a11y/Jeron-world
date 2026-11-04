@@ -122,4 +122,34 @@
       movieSearch.focus({ preventScroll: true });
     } else searchMovies();
   }
+
+  // JERON AI calls the protected Supabase Edge Function. The OpenAI key never enters browser code.
+  const aiForm = document.getElementById('jeronAiForm'), aiInput = document.getElementById('jeronAiInput');
+  const aiMessages = document.getElementById('jeronAiMessages'), aiSend = document.getElementById('jeronAiSend');
+  const SUPABASE_FUNCTION_URL = 'https://oezmhonqmlificwoxjch.supabase.co/functions/v1/jeron-ai';
+  function addAiMessage(text, role, sources = []) {
+    const item = document.createElement('div'); item.className = 'ai-message ' + (role === 'user' ? 'ai-user' : 'ai-assistant');
+    const label = document.createElement('b'); label.textContent = role === 'user' ? 'YOU' : 'JERON AI';
+    const body = document.createElement('p'); body.textContent = text; item.append(label, body);
+    if (sources.length) { const list = document.createElement('div'); list.className = 'ai-sources';
+      const heading = document.createElement('b'); heading.textContent = 'SOURCES'; list.append(heading);
+      sources.slice(0,8).forEach(source => { if (!source || typeof source.url !== 'string' || !/^https?:\/\//i.test(source.url)) return;
+        const link = document.createElement('a'); link.href = source.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+        link.textContent = source.title || new URL(source.url).hostname; list.append(link); });
+      item.append(list); }
+    aiMessages.append(item); aiMessages.scrollTop = aiMessages.scrollHeight; return item;
+  }
+  aiForm?.addEventListener('submit', async event => {
+    event.preventDefault(); const message = aiInput.value.trim(); if (!message) return;
+    addAiMessage(message,'user'); aiInput.value=''; aiSend.disabled=true; aiSend.textContent='Thinking…';
+    const pending=addAiMessage('Searching and preparing a helpful answer…','assistant');
+    try {
+      const response=await fetch(SUPABASE_FUNCTION_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message})});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok) throw new Error(data.error || 'Jeron AI could not respond. Please try again.');
+      pending.remove(); addAiMessage(data.answer || 'I could not prepare an answer this time.','assistant',data.sources || []);
+    } catch(error) { pending.remove(); addAiMessage(error.message || 'Connection problem. Please try again later.','assistant'); }
+    finally { aiSend.disabled=false; aiSend.textContent='Send ↗'; aiInput.focus(); }
+  });
+
 })();
