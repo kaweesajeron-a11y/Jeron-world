@@ -118,3 +118,25 @@ body[data-auth-required="true"]::after{content:"VERIFYING YOUR MEMBER PASS  • 
 .jw-bottom-cta p:not(.eyebrow){color:#aaa8bd;margin:0 0 24px}
 @media(max-width:900px){.jw-hero{grid-template-columns:1fr;padding-top:58px;min-height:0}.jw-hero-visual{height:390px}.jw-bento{grid-template-rows:230px 230px}.jw-founder-strip{grid-template-columns:85px 1fr}.founder-monogram{width:78px;height:78px}.founder-stamp{display:none}}
 @media(max-width:620px){.jw-home{padding-left:18px!important;padding-right:18px!important}.jw-hero{padding-top:42px;gap:28px}.jw-hero h1{font-size:clamp(3.1rem,14vw,5rem)}.jw-hero-visual{height:290px;border-radius:23px}.jw-floating-card{right:12px;top:12px;padding:9px 11px}.jw-proof{gap:9px 14px;font-size:.68rem}.jw-stats{grid-template-columns:repeat(2,1fr);gap:18px 0;margin-bottom:45px}.jw-stats div{padding:0 9px}.jw-stats div:nth-child(2){border:0}.jw-stats div:nth-child(3){padding-left:0}.jw-section-head{align-items:flex-start;flex-direction:column}.jw-side-note{display:none}.jw-bento{grid-template-columns:1fr;grid-template-rows:250px 220px 220px}.tile-movies{grid-row:auto}.jw-tile{padding:20px}.jw-founder-strip{grid-template-columns:1fr;padding:25px;gap:16px;margin:50px 0}.founder-monogram{width:65px;height:65px;border-radius:18px}.jw-bottom-cta{padding:48px 18px;margin-top:45px}}
+
+
+/* Clean sign-in-only member gate */
+.signin-main{min-height:calc(100vh - 90px);display:grid;place-items:center;padding-top:45px;padding-bottom:65px}
+.signin-card{width:min(100%,510px);position:relative;overflow:hidden;padding:clamp(26px,5vw,48px);border:1px solid #ffffff20;border-radius:28px;background:radial-gradient(ellipse at 100% 0%,#8b72ff25,transparent 48%),linear-gradient(145deg,#17172aee,#0d0e19f5);box-shadow:0 28px 90px #0009,0 0 65px #8b72ff12}
+.signin-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#8b72ff,#55e5e1,#ff6fae)}
+.signin-mark{width:58px;height:58px;display:grid;place-items:center;margin-bottom:28px;border-radius:18px;background:linear-gradient(135deg,#8b72ff,#55e5e1);color:#090914;font:800 1.35rem 'Space Grotesk';box-shadow:0 12px 35px #8b72ff44}
+.signin-card .eyebrow{margin-bottom:12px}
+.signin-card h1{font:700 clamp(2.6rem,7vw,4rem)/1.02 'Space Grotesk';letter-spacing:-.065em;margin:0}
+.signin-card h1 span{background:linear-gradient(100deg,#b8a9ff,#63e5df 65%,#ff91c5);background-clip:text;color:transparent}
+.signin-intro{color:#aaa8bd;margin:17px 0 25px;line-height:1.7}
+.signin-card .stack-form{gap:10px}
+.signin-card .stack-form label{color:#d4d1e2;font-size:.82rem}
+.signin-card .stack-form input{width:100%;padding:14px 15px;border:1px solid #ffffff22;border-radius:12px;background:#080914;color:#fff;font:inherit;outline:none}
+.signin-card .stack-form input:focus{border-color:#65e5df;box-shadow:0 0 0 3px #55e5e122}
+.signin-card .stack-form button{margin-top:8px;padding:15px;border:0;border-radius:12px;background:linear-gradient(100deg,#8b72ff,#55dcd9);color:#090914;font-weight:900;font-size:.95rem;cursor:pointer}
+.signin-card .stack-form button:disabled{opacity:.65;cursor:wait}
+.signin-card .form-status{min-height:24px;margin-top:16px;color:#72e8df;font-size:.84rem;overflow-wrap:anywhere}
+.signin-card .form-status.error{color:#ff8585}
+.signin-note{margin:15px 0 0;color:#85839b;font-size:.78rem;line-height:1.6}
+.signin-card .ghost-button{padding:9px 13px;border:1px solid #55e5e177;border-radius:9px;background:#55e5e114;color:#70e9e4;font-weight:800;cursor:pointer}
+@media(max-width:620px){.signin-main{min-height:calc(100vh - 75px);padding:30px 18px 45px}.signin-card{border-radius:22px}}
