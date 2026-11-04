@@ -1,0 +1,4 @@
+project_id = "oezmhonqmlificwoxjch"
+
+[functions.jeron-ai]
+verify_jwt = false
