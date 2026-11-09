@@ -298,3 +298,7 @@ main:not(.jw-home){padding-bottom:90px}
 /* Founder profile photo */
 .founder-photo{overflow:hidden;padding:0;border-radius:50%;width:clamp(104px,14vw,168px);aspect-ratio:1;flex:0 0 auto;border:2px solid rgba(104,226,255,.75);box-shadow:0 0 28px rgba(104,226,255,.18)}
 .founder-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 24%}
+
+
+/* Jeron World featured music cards */
+.music-track-card .poster-img{aspect-ratio:1/1;object-fit:cover}.music-track-card .card-body{display:flex;flex-direction:column;align-items:flex-start;gap:10px}.music-track-card .card-body .text-link{display:inline-block;margin-top:2px}.section-intro{color:var(--muted,#aaa);max-width:720px;line-height:1.7}
